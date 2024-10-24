@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>clientes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">clientes</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>
+        <ion-button routerLink="/clientes/create">
+          <ion-icon slot="start" name="add"></ion-icon> Crear Cliente
+        </ion-button>
+      </ion-card-subtitle>
+      <ion-card-title>
+        <ion-searchbar
+          placeholder="Buscar por apellido"  (ionInput)="filtrarClientes($event)"
+        ></ion-searchbar>
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <!-- Mostrar clientes filtrados -->
+        <ion-item *ngFor="let cliente of clientesFiltrados">
+          <ion-label>Codigo:{{cliente.id}} - Nombre:{{cliente.nombre}} - Apellido:{{cliente.apellido}}</ion-label>
+          <ion-buttons slot="end">
+            <ion-button [routerLink]="['/clientes/update/',cliente.id]">
+              <ion-icon slot="start" name="create"></ion-icon> Editar
+            </ion-button>
+            <ion-button (click)="borrar(cliente.id)">
+              <ion-icon slot="start" name="trash"></ion-icon> Borrar
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

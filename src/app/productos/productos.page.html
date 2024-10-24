@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Producto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Producto</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle> <ion-button routerLink="/productos/create" >
+        <ion-icon slot="start" name="add" ></ion-icon> Crear Producto
+      </ion-button> </ion-card-subtitle>
+      <ion-card-title>   <ion-searchbar
+        placeholder="Buscar por descripcion"  (ionInput)="filtrarProductos($event)"
+      ></ion-searchbar></ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+
+      <ion-list>
+        <ion-item *ngFor="let producto of productosFiltrados">
+          <ion-label>Codigo:{{producto.id}}- Nombre:{{producto.nombre}} - Cantidad:{{producto.cantidad}} - Descripcion: {{producto.descripcion}}</ion-label>
+          <ion-buttons slot="end">
+            <ion-button [routerLink]="['/productos/update/',producto.id]">
+              <ion-icon slot="start" name="create" ></ion-icon>
+              Editar
+            </ion-button>
+            <ion-button (click)="borrar(producto.id)" >
+              <ion-icon slot="start" name="trash"></ion-icon>
+              Borrar
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-list>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

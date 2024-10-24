@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>create</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">update</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-card>
+    <ion-card-header>
+
+      <ion-card-title>Crear Cliente</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="clienteForm" (ngSubmit)="save()">
+        <ion-list>
+          <ion-item>
+            <ion-input type="text" formControlName="nombre" placeholder="Ingresar su nombre" label="Nombre"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="text" formControlName="apellido" placeholder="Ingresar su apellido" label="Apellido"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="text" formControlName="direccion" placeholder="Ingresar su direccion" label="Direccion"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="text" formControlName="dni"  placeholder="Ingresar su DNI" label="DNI"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="number" formControlName="edad" placeholder="Ingresar su edad" label="Edad"></ion-input>
+          </ion-item>
+
+            <ion-button expand="block" type="submit" [disabled]="!clienteForm.valid"  >
+              Registrar
+            </ion-button>
+
+        </ion-list>
+      </form>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>
